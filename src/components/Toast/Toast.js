@@ -18,8 +18,16 @@ const ICONS_BY_VARIANT = {
 	error: AlertOctagon,
 };
 
-function Toast({ variant, handleDismiss, children }) {
+function Toast({ variant, id, toasts, setToasts, children }) {
 	const Icon = ICONS_BY_VARIANT[variant];
+
+	function handleDismiss() {
+		const nextToasts = toasts.filter((toast) => {
+			return toast.id !== id;
+		});
+
+		setToasts(nextToasts);
+	}
 
 	return (
 		// <div className={`${styles.toast} ${styles.notice}`}>
