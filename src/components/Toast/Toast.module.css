@@ -34,9 +34,6 @@
 	padding: 16px;
 	cursor: pointer;
 }
-.hidden {
-	display: none;
-}
 .notice {
 	background: var(--color-notice-bg);
 }
