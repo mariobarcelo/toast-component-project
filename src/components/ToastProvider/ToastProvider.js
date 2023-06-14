@@ -8,10 +8,7 @@ function ToastProvider({ children }) {
 	React.useEffect(() => {
 		function handleDismissAllToasts(event) {
 			if (event.key === 'Escape') {
-				const toastsId = [...toasts].map((toast) => {
-					return toast.id;
-				});
-				dismissToast(toastsId);
+				setToasts([]);
 			}
 		}
 
@@ -20,7 +17,7 @@ function ToastProvider({ children }) {
 		// Cleanup function
 		return () =>
 			window.removeEventListener('keydown', handleDismissAllToasts);
-	});
+	}, []);
 
 	function createToast(message, variant) {
 		const nextToast = { message, variant, id: crypto.randomUUID() };
